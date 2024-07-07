@@ -1,7 +1,7 @@
 from customtkinter import *
-import Pickle_Jar_AI, typing, asyncio, tkinter, pywinstyles
+import Pickle_Jar_AI, typing, asyncio, tkinter, pywinstyles, Pickle_Jar_AI_window_interface
 
-class AI_Window(tkinter.Toplevel):
+class AI_Window(tkinter.Toplevel, Pickle_Jar_AI_window_interface.Pickle_Jar_AI_window_interface):
 
 	TITLE: typing.Final[str] = f"Pickle Jar AI assistant"
 	HEIGHT: typing.Final[int] = 300
