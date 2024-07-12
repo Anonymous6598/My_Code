@@ -58,6 +58,7 @@ class Program(Tk, Pickle_Jar_Interface.Pickle_Jar_Interface):
         self.bind(f"<F6>", self.__delete_code__)
         self.bind(f"<F7>", self.__open_ai_window__)
         
+    @typing.override
     def __run_code__(self: typing.Self, event: str | None = None) -> None:
         try:
             exec(f"{self.main_screen_code_field.get(f'1.0', tkinter.END)}")
@@ -71,7 +72,8 @@ class Program(Tk, Pickle_Jar_Interface.Pickle_Jar_Interface):
                 
             else:
                 tkinter.messagebox.showerror(title=f"error", message=f"{exception}")
-        
+
+    @typing.override     
     def __save_code__(self: typing.Self, event: str | None = None) -> None:
         self.file_name: tkinter.filedialog = tkinter.filedialog.asksaveasfilename(title=f"save python file", filetypes=[(f"Python file (*.py)", f"*.py")], defaultextension=[(f"Python file (*.py)", f"*.py")])
 
@@ -79,6 +81,7 @@ class Program(Tk, Pickle_Jar_Interface.Pickle_Jar_Interface):
             self.file_data: str = self.main_screen_code_field.get("1.0", tkinter.END)
             self.file.write(self.file_data)
 
+    @typing.override
     def __open_code__(self: typing.Self, event: str | None = None) -> None:
         self.opened_name_file: tkinter.filedialog = tkinter.filedialog.askopenfilename(title=f"open python file", filetypes=[(f"Python file (*.py)", f"*.py")], defaultextension=[(f"Python file (*.py)", f"*.py")])
 
@@ -100,9 +103,11 @@ class Program(Tk, Pickle_Jar_Interface.Pickle_Jar_Interface):
             else:
                 tkinter.messagebox.showerror(title=f"error", message=f"this is not python file")
 
+    @typing.override
     def __delete_code__(self: typing.Self, event: str | None = None) -> None:
         self.main_screen_code_field.delete(f"1.0", tkinter.END)
-    
+
+    @typing.override    
     def __open_ai_window__(self: typing.Self, event: str | None = None) -> None:
         self.ai_window: Pickle_Jar_AI_window.AI_Window = Pickle_Jar_AI_window.AI_Window()
         

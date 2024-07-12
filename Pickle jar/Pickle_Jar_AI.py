@@ -8,6 +8,7 @@ class Pickle_Jar_LM(Pickle_Jar_AI_interface.Pickle_Jar_AI_interface):
     def __init__(self: typing.Self) -> None:
         self.pickle_jar_ai_client: g4f.local.LocalClient = g4f.local.LocalClient()
 
+    @typing.override
     async def __response__(self: typing.Self, prompt: str) -> str:
         self.response = self.pickle_jar_ai_client.chat.completions.create(model=self.LM, messages=[{f"role": f"user", f"content": prompt}])
         
