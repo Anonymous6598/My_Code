@@ -8,7 +8,7 @@ before:
 
 now:
 
-![Snimak ekrana 2024-07-31 181509](https://github.com/user-attachments/assets/06ed1b0f-c723-4204-bd5b-80932ab24d52)
+![Snimak ekrana 2024-07-31 181509](https://github.com/user-attachments/assets/7a1b0731-14dd-48f8-a2fa-cf3b4d0da7c3)
 
 (everything is in Serbian) 
 
