@@ -1,7 +1,7 @@
 from customtkinter import *
-import My_Code_AI, typing, asyncio, tkinter
+import My_Code_AI, My_Code_AI_interface, typing, asyncio, tkinter
 
-class AI_Window(CTkToplevel):
+class AI_Window(CTkToplevel, My_Code_AI_interface.My_Code_AI_interface):
 
 	TITLE: typing.Final[str] = f"My Code AI assistant"
 	HEIGHT: typing.Final[int] = 300
