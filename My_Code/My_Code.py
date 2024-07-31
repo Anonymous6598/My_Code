@@ -120,10 +120,6 @@ class Program(My_Code_window.Tk, My_Code_Interface.My_Code_Interface):
     def __open_ai_window__(self: typing.Self, event: str | None = None) -> None:
         self.ai_window: My_Code_AI_window.AI_Window = My_Code_AI_window.AI_Window()
         
-    @typing.override
-    def __change_text_size__(self: typing.Self, event: str | None = None) -> None:
-        pass
-        
     def __exit__(self: typing.Self) -> None:
         if locale.getdefaultlocale()[0] == f"sr_RS":
             self.main_screen_exit: tkinter.messagebox = tkinter.messagebox.askyesno(title=f"излаз", message=f"желите да изађете?")
