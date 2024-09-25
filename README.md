@@ -1,5 +1,5 @@
 # My_Code (previously Pickle_Jar)
-This is new python code editor for begginers with script run ability and with hot keys. And with AI assistant chatbot, coders can write better code, learn more about programming and optimize their work. Embrace the future! And do not be lazy while styding. No longer Pickle_Jar, now it is My_Code, with redesigned modern ui, which will satisfy your eyes.
+This is new python code editor for begginers with script run ability and with hot keys. And with Code-Llama model assistant chatbot, coders can write better code, learn more about programming and optimize their work. Embrace the future! And do not be lazy while styding. No longer Pickle_Jar, now it is My_Code, with redesigned modern ui, which will satisfy your eyes.
 
 before:
 ![Snimak ekrana 2024-07-07 194405](https://github.com/Anonymous6598/Pickle_jar/assets/121385046/4a18cdfd-e923-40e2-8559-6661dd2683c9)
