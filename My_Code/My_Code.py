@@ -1,6 +1,6 @@
 from tkinterdnd2 import *
 from customtkinter import *
-import My_Code_Interface, tkinter.messagebox, tkinter.filedialog, typing, locale, tkinter, My_Code_AI_window, My_Code_window, CTkCodeBox, CTkMenuBar
+import My_Code_Interface, tkinter.messagebox, tkinter.filedialog, typing, locale, tkinter, My_Code_window, CTkCodeBox, CTkMenuBar
 
 class Program(My_Code_window.Tk, My_Code_Interface.My_Code_Interface):
     
@@ -39,7 +39,7 @@ class Program(My_Code_window.Tk, My_Code_Interface.My_Code_Interface):
             self.main_screen_title_menu_submenu_open_button: CTkButton = self.main_screen_title_menu_submenu.add_option(option=f"отвори", command=self.__open_code__)
             self.main_screen_title_menu_submenu_save_button: CTkButton = self.main_screen_title_menu_submenu.add_option(option=f"сачувај", command=self.__save_code__)
             self.main_screen_title_menu_submenu_delete_button: CTkButton = self.main_screen_title_menu_submenu.add_option(option=f"обриши", command=self.__delete_code__)
-            self.main_screen_title_menu_submenu_ai_button: CTkButton = self.main_screen_title_menu_submenu.add_option(option=f"ВЕИ", command=self.__open_ai_window__) 
+            self.main_screen_title_menu_submenu_ai_button: CTkButton = self.main_screen_title_menu_submenu.add_option(option=f"AI", command=lambda: os.startfile(f"My_Code_AI_window.py", show_cmd=False)) 
 
         elif locale.getdefaultlocale()[0] == f"ru_RU":
             self.main_screen_title_menu_submenu: CTkMenuBar.CustomDropdownMenu = CTkMenuBar.CustomDropdownMenu(widget=self.main_screen_title_menu_menu_button, fg_color=f"transparent")
@@ -48,7 +48,7 @@ class Program(My_Code_window.Tk, My_Code_Interface.My_Code_Interface):
             self.main_screen_title_menu_submenu_open_button: CTkButton = self.main_screen_title_menu_submenu.add_option(option=f"открыть", command=self.__open_code__)
             self.main_screen_title_menu_submenu_save_button: CTkButton = self.main_screen_title_menu_submenu.add_option(option=f"сохранить", command=self.__save_code__)
             self.main_screen_title_menu_submenu_delete_button: CTkButton = self.main_screen_title_menu_submenu.add_option(option=f"стереть", command=self.__delete_code__)
-            self.main_screen_title_menu_submenu_ai_button: CTkButton = self.main_screen_title_menu_submenu.add_option(option=f"ИИ (локальная нейросеть)", command=self.__open_ai_window__)
+            self.main_screen_title_menu_submenu_ai_button: CTkButton = self.main_screen_title_menu_submenu.add_option(option=f"ИИ (локальная нейросеть)", command=lambda: os.startfile(f"My_Code_AI_window.py", show_cmd=False))
 
         else:
             self.main_screen_title_menu_submenu: CTkMenuBar.CustomDropdownMenu = CTkMenuBar.CustomDropdownMenu(widget=self.main_screen_title_menu_menu_button, fg_color=f"transparent")
@@ -57,7 +57,7 @@ class Program(My_Code_window.Tk, My_Code_Interface.My_Code_Interface):
             self.main_screen_title_menu_submenu_open_button: CTkButton = self.main_screen_title_menu_submenu.add_option(option=f"open", command=self.__open_code__)
             self.main_screen_title_menu_submenu_save_button: CTkButton = self.main_screen_title_menu_submenu.add_option(option=f"save", command=self.__save_code__)
             self.main_screen_title_menu_submenu_delete_button: CTkButton = self.main_screen_title_menu_submenu.add_option(option=f"delete", command=self.__delete_code__)
-            self.main_screen_title_menu_submenu_ai_button: CTkButton = self.main_screen_title_menu_submenu.add_option(option=f"AI", command=self.__open_ai_window__)
+            self.main_screen_title_menu_submenu_ai_button: CTkButton = self.main_screen_title_menu_submenu.add_option(option=f"AI", command=lambda: os.startfile(f"My_Code_AI_window.py", show_cmd=False))
         
         self.bind(f"<F1>", lambda event: self.main_screen_code_field.edit_undo())
         self.bind(f"<F2>", lambda event: self.main_screen_code_field.edit_redo())
@@ -65,7 +65,7 @@ class Program(My_Code_window.Tk, My_Code_Interface.My_Code_Interface):
         self.bind(f"<F4>", self.__save_code__)
         self.bind(f"<F5>", self.__run_code__)
         self.bind(f"<F6>", self.__delete_code__)
-        self.bind(f"<F7>", self.__open_ai_window__)
+        self.bind(f"<F7>", lambda: os.startfile(f"My_Code_AI_window.py", show_cmd=False))
         
     @typing.override
     def __run_code__(self: typing.Self, event: str | None = None) -> None:
@@ -115,10 +115,6 @@ class Program(My_Code_window.Tk, My_Code_Interface.My_Code_Interface):
     @typing.override
     def __delete_code__(self: typing.Self, event: str | None = None) -> None:
         self.main_screen_code_field.delete(f"1.0", tkinter.END)
-
-    @typing.override    
-    def __open_ai_window__(self: typing.Self, event: str | None = None) -> None:
-        self.ai_window: My_Code_AI_window.AI_Window = My_Code_AI_window.AI_Window()
         
     def __exit__(self: typing.Self) -> None:
         if locale.getdefaultlocale()[0] == f"sr_RS":
