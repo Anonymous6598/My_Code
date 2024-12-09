@@ -117,6 +117,7 @@ class Program(My_Code_window.Tk, My_Code_Interface.My_Code_Interface):
         self.main_screen_code_field.delete(f"1.0", tkinter.END)
         
     def __exit__(self: typing.Self) -> None:
+	subprocess.call(f"TASKKILL /F /IM Python.exe", shell=False)
         if locale.getdefaultlocale()[0] == f"sr_RS":
             self.main_screen_exit: tkinter.messagebox = tkinter.messagebox.askyesno(title=f"излаз", message=f"желите да изађете?")
             if self.main_screen_exit: sys.exit()
