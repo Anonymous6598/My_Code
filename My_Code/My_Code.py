@@ -1,6 +1,6 @@
 from tkinterdnd2 import *
 from customtkinter import *
-import My_Code_Interface, tkinter.messagebox, tkinter.filedialog, typing, locale, tkinter, My_Code_window, CTkCodeBox, CTkMenuBar
+import My_Code_Interface, tkinter.messagebox, tkinter.filedialog, typing, locale, tkinter, My_Code_window, CTkCodeBox, CTkMenuBar, platform, sys, os, subprocess
 
 class Program(My_Code_window.Tk, My_Code_Interface.My_Code_Interface):
     
@@ -16,16 +16,17 @@ class Program(My_Code_window.Tk, My_Code_Interface.My_Code_Interface):
         set_appearance_mode(self.THEME)
         
         self.title(self.TITLE)
-        self.iconbitmap(self.ICON)
         self.protocol(f"WM_DELETE_WINDOW", self.__exit__)
 
-        self.main_screen_code_field: CTkCodeBox.CTkCodeBox = CTkCodeBox.CTkCodeBox(self, language=f"python", line_numbering=True, menu=True, undo=True, theme=f"default", fg_color=f"black")
-        self.main_screen_code_field.pack(fill=f"both", expand=True)
+        if platform.system() == f"Windows":
+            self.iconbitmap(self.ICON)
+
         
-        self.main_screen_code_field.drop_target_register(DND_ALL)
-        self.main_screen_code_field.dnd_bind(f"<<Drop>>", self.__drop_file_into_code_field__)
-        
-        self.main_screen_title_menu: CTkMenuBar.CTkTitleMenu = CTkMenuBar.CTkTitleMenu(self)
+        if platform.system() == f"Linux":
+            self.main_screen_title_menu: CTkMenuBar.CTkMenuBar = CTkMenuBar.CTkMenuBar(master=self)
+		
+        else:
+            self.main_screen_title_menu: CTkMenuBar.CTkTitleMenu = CTkMenuBar.CTkTitleMenu(master=self)
         
         self.main_screen_title_menu_menu_button: CTkButton = self.main_screen_title_menu.add_cascade(text=f"☰")
         
@@ -39,7 +40,7 @@ class Program(My_Code_window.Tk, My_Code_Interface.My_Code_Interface):
             self.main_screen_title_menu_submenu_open_button: CTkButton = self.main_screen_title_menu_submenu.add_option(option=f"отвори", command=self.__open_code__)
             self.main_screen_title_menu_submenu_save_button: CTkButton = self.main_screen_title_menu_submenu.add_option(option=f"сачувај", command=self.__save_code__)
             self.main_screen_title_menu_submenu_delete_button: CTkButton = self.main_screen_title_menu_submenu.add_option(option=f"обриши", command=self.__delete_code__)
-            self.main_screen_title_menu_submenu_ai_button: CTkButton = self.main_screen_title_menu_submenu.add_option(option=f"AI", command=lambda: os.startfile(f"My_Code_AI_window.py", show_cmd=False)) 
+            self.main_screen_title_menu_submenu_ai_button: CTkButton = self.main_screen_title_menu_submenu.add_option(option=f"AI", command=lambda: self.__open_ai_window__()) 
 
         elif locale.getdefaultlocale()[0] == f"ru_RU":
             self.main_screen_title_menu_submenu: CTkMenuBar.CustomDropdownMenu = CTkMenuBar.CustomDropdownMenu(widget=self.main_screen_title_menu_menu_button, fg_color=f"transparent")
@@ -48,7 +49,7 @@ class Program(My_Code_window.Tk, My_Code_Interface.My_Code_Interface):
             self.main_screen_title_menu_submenu_open_button: CTkButton = self.main_screen_title_menu_submenu.add_option(option=f"открыть", command=self.__open_code__)
             self.main_screen_title_menu_submenu_save_button: CTkButton = self.main_screen_title_menu_submenu.add_option(option=f"сохранить", command=self.__save_code__)
             self.main_screen_title_menu_submenu_delete_button: CTkButton = self.main_screen_title_menu_submenu.add_option(option=f"стереть", command=self.__delete_code__)
-            self.main_screen_title_menu_submenu_ai_button: CTkButton = self.main_screen_title_menu_submenu.add_option(option=f"ИИ (локальная нейросеть)", command=lambda: os.startfile(f"My_Code_AI_window.py", show_cmd=False))
+            self.main_screen_title_menu_submenu_ai_button: CTkButton = self.main_screen_title_menu_submenu.add_option(option=f"ИИ (локальная нейросеть)", command=lambda: self.__open_ai_window__())
 
         else:
             self.main_screen_title_menu_submenu: CTkMenuBar.CustomDropdownMenu = CTkMenuBar.CustomDropdownMenu(widget=self.main_screen_title_menu_menu_button, fg_color=f"transparent")
@@ -57,7 +58,13 @@ class Program(My_Code_window.Tk, My_Code_Interface.My_Code_Interface):
             self.main_screen_title_menu_submenu_open_button: CTkButton = self.main_screen_title_menu_submenu.add_option(option=f"open", command=self.__open_code__)
             self.main_screen_title_menu_submenu_save_button: CTkButton = self.main_screen_title_menu_submenu.add_option(option=f"save", command=self.__save_code__)
             self.main_screen_title_menu_submenu_delete_button: CTkButton = self.main_screen_title_menu_submenu.add_option(option=f"delete", command=self.__delete_code__)
-            self.main_screen_title_menu_submenu_ai_button: CTkButton = self.main_screen_title_menu_submenu.add_option(option=f"AI", command=lambda: os.startfile(f"My_Code_AI_window.py", show_cmd=False))
+            self.main_screen_title_menu_submenu_ai_button: CTkButton = self.main_screen_title_menu_submenu.add_option(option=f"AI", command=lambda: self.__open_ai_window__())
+
+        self.main_screen_code_field: CTkCodeBox.CTkCodeBox = CTkCodeBox.CTkCodeBox(self, language=f"python", line_numbering=True, menu=True, undo=True, theme=f"default", fg_color=f"black")
+        self.main_screen_code_field.pack(fill=f"both", expand=True)
+        
+        self.main_screen_code_field.drop_target_register(DND_ALL)
+        self.main_screen_code_field.dnd_bind(f"<<Drop>>", self.__drop_file_into_code_field__)
         
         self.bind(f"<F1>", lambda event: self.main_screen_code_field.edit_undo())
         self.bind(f"<F2>", lambda event: self.main_screen_code_field.edit_redo())
@@ -115,19 +122,44 @@ class Program(My_Code_window.Tk, My_Code_Interface.My_Code_Interface):
     @typing.override
     def __delete_code__(self: typing.Self, event: str | None = None) -> None:
         self.main_screen_code_field.delete(f"1.0", tkinter.END)
+
+    def __open_ai_window__(self: typing.Self) -> None:
+        if platform.system() == f"Linux":
+            os.popen(f"python3 My_Code_AI_window.py")
+
+        else:
+            os.startfile(f"My_Code_AI_window.py", show_cmd=False)
         
     def __exit__(self: typing.Self) -> None:
-	if locale.getdefaultlocale()[0] == f"sr_RS":
-	   self.main_screen_exit: tkinter.messagebox = tkinter.messagebox.askyesno(title=f"излаз", message=f"желите да изађете?")
-	   if self.main_screen_exit: subprocess.call(f"TASKKILL /F /IM Python.exe", shell=False); sys.exit()
+        if locale.getdefaultlocale()[0] == f"sr_RS":
+            self.main_screen_exit: tkinter.messagebox = tkinter.messagebox.askyesno(title=f"излаз", message=f"желите да изађете?") 
+            if self.main_screen_exit: 
+                if platform.system() == f"Windows":
+                    subprocess.call(f"TASKKILL /F /IM Python.exe", shell=False)
+                    sys.exit()
+				
+                else:
+                    sys.exit()
 
-	elif locale.getdefaultlocale()[0] == f"ru_RU":
-	    self.main_screen_exit: tkinter.messagebox = tkinter.messagebox.askyesno(title=f"выход", message=f"желайте выйти?")
-	    if self.main_screen_exit: subprocess.call(f"TASKKILL /F /IM Python.exe", shell=False); sys.exit()
-			
-	else:
-	    self.main_screen_exit: tkinter.messagebox = tkinter.messagebox.askyesno(title=f"exit", message=f"would you like to exit?")
-	    if self.main_screen_exit: subprocess.call(f"TASKKILL /F /IM Python.exe", shell=False); sys.exit()
+        elif locale.getdefaultlocale()[0] == f"ru_RU":
+            self.main_screen_exit: tkinter.messagebox = tkinter.messagebox.askyesno(title=f"выход", message=f"желайте выйти?")
+            if self.main_screen_exit: 
+                if platform.system() == f"Windows":
+                    subprocess.call(f"TASKKILL /F /IM Python.exe", shell=False)
+                    sys.exit()
+				
+                else:
+                    sys.exit()
+            
+        else:
+            self.main_screen_exit: tkinter.messagebox = tkinter.messagebox.askyesno(title=f"exit", message=f"would you like to exit?")
+            if self.main_screen_exit: 
+                if platform.system() == f"Windows":
+                    subprocess.call(f"TASKKILL /F /IM Python.exe", shell=False)
+                    sys.exit()
+				
+                else:
+                    sys.exit()
         
 if __name__ == f"__main__":
     program: Program = Program()

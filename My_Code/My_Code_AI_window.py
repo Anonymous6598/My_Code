@@ -1,4 +1,4 @@
-import customtkinter, My_Code_AI, My_Code_AI_window_interface, typing, asyncio, tkinter, speech_recognition
+import customtkinter, My_Code_AI, My_Code_AI_window_interface, typing, asyncio, tkinter, speech_recognition, platform
 
 class My_Code_AI_Window(customtkinter.CTk, My_Code_AI_window_interface.My_Code_AI_window_interface):
 
@@ -11,10 +11,13 @@ class My_Code_AI_Window(customtkinter.CTk, My_Code_AI_window_interface.My_Code_A
 	def __init__(self: typing.Self, *args, **kwargs) -> None:
 		customtkinter.CTk.__init__(self, *args, **kwargs)
 
+		customtkinter.set_appearance_mode(self.THEME)
+
 		self.title(self.TITLE)
 		self.geometry(f"{self.WIDTH}x{self.HEIGHT}")
 		self.resizable(False, False)
-		self.after(250, lambda: self.iconbitmap(self.ICON))
+		if platform.system() == f"Windows":
+			self.after(250, lambda: self.iconbitmap(self.ICON))
 
 		self.ai_window_textbox: customtkinter.CTkTextbox = customtkinter.CTkTextbox(master=self, height=265, width=524, corner_radius=0, fg_color=f"transparent", text_color=(f"black", f"white"))
 		self.ai_window_textbox.place(x=0, y=0)

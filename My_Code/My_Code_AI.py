@@ -12,4 +12,4 @@ class My_Code_LM(My_Code_AI_interface.My_Code_AI_interface):
     async def __response__(self: typing.Self, prompt: str) -> str:
         self.user_query: list[dict[str, str]] = [{"role": "user", "content": prompt}]
 
-        return self.pipeline(self.user_query)[0].get("generated_text")[1].get("content")
+        return self.pipeline_for_lm(self.user_query)[0].get("generated_text")[1].get("content")
