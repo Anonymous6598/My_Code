@@ -131,35 +131,12 @@ class Program(My_Code_window.Tk, My_Code_Interface.My_Code_Interface):
             os.startfile(f"My_Code_AI_window.py", show_cmd=False)
         
     def __exit__(self: typing.Self) -> None:
-        if locale.getdefaultlocale()[0] == f"sr_RS":
-            self.main_screen_exit: tkinter.messagebox = tkinter.messagebox.askyesno(title=f"излаз", message=f"желите да изађете?") 
-            if self.main_screen_exit: 
-                if platform.system() == f"Windows":
-                    subprocess.call(f"TASKKILL /F /IM Python.exe", shell=False)
-                    sys.exit()
+	if platform.system() == f"Windows":
+	   subprocess.call(f"TASKKILL /F /IM Python.exe", shell=False)
+           sys.exit()
 				
-                else:
-                    sys.exit()
-
-        elif locale.getdefaultlocale()[0] == f"ru_RU":
-            self.main_screen_exit: tkinter.messagebox = tkinter.messagebox.askyesno(title=f"выход", message=f"желайте выйти?")
-            if self.main_screen_exit: 
-                if platform.system() == f"Windows":
-                    subprocess.call(f"TASKKILL /F /IM Python.exe", shell=False)
-                    sys.exit()
-				
-                else:
-                    sys.exit()
-            
         else:
-            self.main_screen_exit: tkinter.messagebox = tkinter.messagebox.askyesno(title=f"exit", message=f"would you like to exit?")
-            if self.main_screen_exit: 
-                if platform.system() == f"Windows":
-                    subprocess.call(f"TASKKILL /F /IM Python.exe", shell=False)
-                    sys.exit()
-				
-                else:
-                    sys.exit()
+	    sys.exit()
         
 if __name__ == f"__main__":
     program: Program = Program()
