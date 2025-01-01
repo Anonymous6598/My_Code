@@ -131,12 +131,12 @@ class Program(My_Code_window.Tk, My_Code_Interface.My_Code_Interface):
             os.startfile(f"My_Code_AI_window.py", show_cmd=False)
         
     def __exit__(self: typing.Self) -> None:
-	if platform.system() == f"Windows":
-	   subprocess.call(f"TASKKILL /F /IM Python.exe", shell=False)
-           sys.exit()
+		if platform.system() == f"Windows":
+	   		subprocess.call(f"TASKKILL /F /IM Python.exe", shell=False)
+           		sys.exit()
 				
-        else:
-	    sys.exit()
+        	else:
+	    		sys.exit()
         
 if __name__ == f"__main__":
     program: Program = Program()
