@@ -10,7 +10,7 @@ This is new python code editor for begginers with script run ability and with ho
 
 ### now:
 
-![Snimak ekrana 2025-01-01 153731](https://github.com/user-attachments/assets/3d16be12-58cf-4612-a510-5dae3b8b47ef)
+![Snimak ekrana 2025-03-15 131039](https://github.com/user-attachments/assets/c7ec9e6b-7894-45fa-b168-a1ea873b3a73)
 
 ## Linux
 
