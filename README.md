@@ -1,5 +1,5 @@
 # My_Code (previously Pickle_Jar)
-This is new python code editor for begginers with script run ability and with hot keys. And with Code-Llama 7b GGUF model assistant chatbot, coders can write better code, learn more about programming and optimize their work. Embrace the future! And do not be lazy while styding. No longer Pickle_Jar, now it is My_Code, with redesigned modern ui, which will satisfy your eyes. And now on Linux!
+This is new python code editor for begginers with script run ability and with hot keys. And with Open AI GPT-4o-mini model assistant chatbot, coders can write better code, learn more about programming and optimize their work. Embrace the future! And do not be lazy while styding. No longer Pickle_Jar, now it is My_Code, with redesigned modern ui, which will satisfy your eyes. And now on Linux!
 
 ## Windows
 
