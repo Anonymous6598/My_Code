@@ -1,24 +1,11 @@
-# My_Code (previously Pickle_Jar)
-This is new python code editor for begginers with script run ability and with hot keys. And with Open AI GPT-4o-mini model assistant chatbot, coders can write better code, learn more about programming and optimize their work. Embrace the future! And do not be lazy while styding. No longer Pickle_Jar, now it is My_Code, with redesigned modern ui, which will satisfy your eyes. And now on Linux!
+# My_Code
+This is new python code editor for begginers with script run ability and with hot keys. And with Open AI GPT-4o model assistant chatbot, coders can write better code, learn more about programming and optimize their work. Embrace the future! And do not be lazy while styding. No longer Pickle_Jar, now it is My_Code, with redesigned modern ui, which will satisfy your eyes. And now on Linux!
 
 ## Windows
-
-### before:
-![Snimak ekrana 2024-07-07 194405](https://github.com/Anonymous6598/Pickle_jar/assets/121385046/4a18cdfd-e923-40e2-8559-6661dd2683c9)
-
-![Snimak ekrana 2024-07-07 201634](https://github.com/Anonymous6598/Pickle_jar/assets/121385046/5c652629-c381-4d91-91da-5a40ab596552)
-
-### now:
 
 ![Snimak ekrana 2025-03-15 131039](https://github.com/user-attachments/assets/c7ec9e6b-7894-45fa-b168-a1ea873b3a73)
 
 ## Linux
-
-### before:
-
-![Snimak ekrana 2024-10-05 003718](https://github.com/user-attachments/assets/351119e0-bb26-48b2-a8d4-ec9b33ff9063)
-
-### now:
 
 ![Снимак екрана од 2024-12-31 16-25-23](https://github.com/user-attachments/assets/e9ba5c39-8c37-4498-8ed0-e43a1e39bf31)
 
