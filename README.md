@@ -1,13 +1,12 @@
 # My_Code
-This is new python code editor for begginers with script run ability and with hot keys. And with Open AI GPT-4o model assistant chatbot, coders can write better code, learn more about programming and optimize their work. Embrace the future! And do not be lazy while styding. No longer Pickle_Jar, now it is My_Code, with redesigned modern ui, which will satisfy your eyes. And now on Linux!
+This is new python code editor for begginers with script run ability and with hot keys. And with Open AI GPT-4o model assistant chatbot, coders can write better code, learn more about programming and optimize their work. Embrace the future! And do not be lazy while styding. And now on Linux! And now with integrated teminal!
 
 ## Windows
 
 ![Snimak ekrana 2025-03-15 131039](https://github.com/user-attachments/assets/c7ec9e6b-7894-45fa-b168-a1ea873b3a73)
 
 ## Linux
-
-![Снимак екрана од 2024-12-31 16-25-23](https://github.com/user-attachments/assets/e9ba5c39-8c37-4498-8ed0-e43a1e39bf31)
+![Снимак екрана од 2025-03-30 22-45-02](https://github.com/user-attachments/assets/976a7868-0fb9-43a8-9432-7ccd71e3ef23)
 
 (everything is in Serbian) 
 
