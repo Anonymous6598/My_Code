@@ -10,12 +10,6 @@ This is new python code editor for begginers with script run ability and with ho
 
 (everything is in Serbian) 
 
-before
-
-![Pickle jar icon](https://github.com/Anonymous6598/Pickle_jar/assets/121385046/1b00a62d-94b2-4b37-be72-760843b5bc32)
-
-now:
-
 ![My Code icon](https://github.com/user-attachments/assets/fc871189-63e2-47a7-89f4-1aff3b950d33)
 
 If you like this project, star it, please.
