@@ -5,7 +5,6 @@ class My_Code_AI_Window(customtkinter.CTkToplevel, My_Code_AI_window_interface.M
 	TITLE: typing.Final[str] = f"My Code AI assistant"
 	HEIGHT: typing.Final[int] = 300
 	WIDTH: typing.Final[int] = 525
-	THEME: typing.Final[str] = f"system"
 
 	def __init__(self: typing.Self, *args, **kwargs) -> None:
 		customtkinter.CTkToplevel.__init__(self, *args, **kwargs)
