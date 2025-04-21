@@ -83,6 +83,7 @@ class Program(My_Code_window.Window, My_Code_Interface.My_Code_Interface):
         self.bind(f"<F7>", lambda: My_Code_AI_window.My_Code_AI_Window())
         self.bind(f"<F8>", lambda event: My_Code_bash_terminal.My_Code_bash_terminal())
         self.bind(f"<F9>", lambda event: self.__create_code__())
+	self.bind(f"<F11>", lambda event: self.__fullscreen__())
         
     @typing.override
     def __run_code__(self: typing.Self, event: str | None = None) -> None:
@@ -154,6 +155,24 @@ class Program(My_Code_window.Window, My_Code_Interface.My_Code_Interface):
 
         self.create_text: str = g4f.ChatCompletion.create(model=f"gpt-4o", messages=[{f"role": f"system", f"content": f"Create python code based on user prompt:"}, {f"role": f"user", f"content": self.code_prompt_input.get_input()}])
         self.main_screen_code_field.insert(f"1.0", self.create_text)
+
+    def __fullscreen__(self: typing.Self) -> None:
+        if self.attributes(f"-fullscreen"): self.attributes(f"-fullscreen", False)
+        
+        else: self.attributes(f"-fullscreen", True)
+
+        if customtkinter.get_appearance_mode()=="Dark": value=1
+        
+        else: value=0
+    
+        try:
+            hwnd = ctypes.windll.user32.GetParent(self.winfo_id())
+            DWMWA_USE_IMMERSIVE_DARK_MODE = 20
+            DWMWA_USE_IMMERSIVE_DARK_MODE_BEFORE_20H1 = 19
+
+            if ctypes.windll.dwmapi.DwmSetWindowAttribute(hwnd, DWMWA_USE_IMMERSIVE_DARK_MODE, ctypes.byref(ctypes.c_int(value)), ctypes.sizeof(ctypes.c_int(value))) != 0: ctypes.windll.dwmapi.DwmSetWindowAttribute(hwnd, DWMWA_USE_IMMERSIVE_DARK_MODE_BEFORE_20H1, ctypes.byref(ctypes.c_int(value)), ctypes.sizeof(ctypes.c_int(value)))
+        
+        except Exception as err: pass
         
     def __exit__(self: typing.Self) -> None:
         if language_data == f"Српски":
