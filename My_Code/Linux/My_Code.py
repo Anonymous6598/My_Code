@@ -83,7 +83,7 @@ class Program(My_Code_window.Window, My_Code_Interface.My_Code_Interface):
         self.bind(f"<F7>", lambda: My_Code_AI_window.My_Code_AI_Window())
         self.bind(f"<F8>", lambda event: My_Code_bash_terminal.My_Code_bash_terminal())
         self.bind(f"<F9>", lambda event: self.__create_code__())
-	self.bind(f"<F11>", lambda event: self.__fullscreen__())
+		self.bind(f"<F11>", lambda event: self.__fullscreen__())
         
     @typing.override
     def __run_code__(self: typing.Self, event: str | None = None) -> None:
