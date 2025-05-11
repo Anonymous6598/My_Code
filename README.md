@@ -20,7 +20,7 @@ This is new python code editor for begginers with script run ability and with ho
 >
 > Specs for laptop to run app:
 > - Intel Core Ultra proccesors
-> - 24 gb of ram (32 gb is recommended)
+> - 8 gb of ram (16 gb is recommended)
 
 
 (everything is in Serbian) 
