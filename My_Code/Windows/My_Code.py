@@ -82,6 +82,7 @@ class Program(My_Code_window.Window, My_Code_Interface.My_Code_Interface):
         self.bind(f"<F7>", lambda: My_Code_AI_window.My_Code_AI_Window())
         self.bind(f"<F8>", lambda event: My_Code_bash_terminal.My_Code_bash_terminal())
         self.bind(f"<F9>", lambda event: self.__create_code__())
+        self.bind(f"<F10>", lambda event: self.__code_explanation__())
         
     @typing.override
     def __run_code__(self: typing.Self, event: str | None = None) -> None:
@@ -141,7 +142,7 @@ class Program(My_Code_window.Window, My_Code_Interface.My_Code_Interface):
     def __delete_code__(self: typing.Self, event: str | None = None) -> None:
         self.main_screen_code_field.delete(f"1.0", tkinter.END)
 
-    def __code_explanation__(self: typing.Self) -> None:
+    def __code_explanation__(self: typing.Self, event: str | None = None) -> None:
         self.summary: str = g4f.ChatCompletion.create(model=f"gpt-4o", messages=[{f"role": f"system", f"content": f"Explain the following code:"}, {f"role": f"user", f"content": self.main_screen_code_field.get(f"1.0", tkinter.END)}])
         if locale.getdefaultlocale()[0] == f"sr_RS":
             tkinter.messagebox.showinfo(title=f"long story short", message=f"Резиме: {self.summary}")

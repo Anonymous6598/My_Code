@@ -1,4 +1,4 @@
-import customtkinter, tkinterdnd2, My_Code_Interface, tkinter.messagebox, tkinter.filedialog, typing, locale, tkinter, My_Code_window, CTkCodeBox, CTkMenuBar, sys, warnings, My_Code_bash_terminal, os, g4f, CTkToolTip, My_Code_AI, My_Code_AI_window_interface, speech_recognition
+import customtkinter, tkinterdnd2, My_Code_Interface, tkinter.messagebox, tkinter.filedialog, typing, locale, tkinter, My_Code_window, CTkCodeBox, CTkMenuBar, sys, warnings, My_Code_bash_terminal, os, CTkToolTip, My_Code_AI, My_Code_AI_window_interface, speech_recognition
 
 warnings.filterwarnings(f"ignore")
 
@@ -83,6 +83,7 @@ class Program(My_Code_window.Window, My_Code_Interface.My_Code_Interface):
         self.bind(f"<F6>", self.__delete_code__)
         self.bind(f"<F7>", lambda: My_Code_AI_Window())
         self.bind(f"<F8>", lambda event: My_Code_bash_terminal.My_Code_bash_terminal())
+        self.bind(f"<F10>", lambda event: self.__code_explanation__())
         self.bind(f"<F9>", lambda event: self.__create_code__())
         
     @typing.override
@@ -143,7 +144,7 @@ class Program(My_Code_window.Window, My_Code_Interface.My_Code_Interface):
     def __delete_code__(self: typing.Self, event: str | None = None) -> None:
         self.main_screen_code_field.delete(f"1.0", tkinter.END)
 
-    def __code_explanation__(self: typing.Self) -> None:
+    def __code_explanation__(self: typing.Self, event: str | None = None) -> None:
         self.summary: str = My_Code_AI.My_Code_LM().__response__(pipe=SLM, query=f"<|system|>Explain the following code:<|end|><|user|>{self.main_screen_code_field.get(f"1.0", tkinter.END)}<|end|><|assistant|>")
         if locale.getdefaultlocale()[0] == f"sr_RS":
             tkinter.messagebox.showinfo(title=f"long story short", message=f"Резиме: {self.summary}")
