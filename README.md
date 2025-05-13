@@ -1,9 +1,9 @@
 # My_Code
-This is new python code editor for begginers with script run ability and with hot keys. And with Open AI GPT-4o (Phi3) model assistant chatbot, coders can write better code, learn more about programming and optimize their work. Embrace the future! And now on Linux! And now with integrated teminal! And now with AI coding (my coder)! And now it supports Copilot+PC laptops!
+This is new python code editor for begginers with script run ability and with hot keys. And with Open AI GPT-4o (Phi3) model assistant chatbot, coders can write better code, learn more about programming and optimize their work. Embrace the future! And now on Linux! And now with integrated teminal! And now with AI coding (my coder)! And now it supports Copilot+PC laptops! And now with whisper me code feature!
 
 ## Windows
 
-![Snimak ekrana 2025-04-11 010331](https://github.com/user-attachments/assets/86242007-dddd-4f4f-a9c7-629d1d3b4baf)
+![Snimak ekrana 2025-05-13 133245](https://github.com/user-attachments/assets/0ff76a30-cd43-483f-be2d-843cd11840b3)
 
 ## Linux
 
