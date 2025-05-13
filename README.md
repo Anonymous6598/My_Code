@@ -7,7 +7,7 @@ This is new python code editor for begginers with script run ability and with ho
 
 ## Linux
 
-![Screenshot_20250411_142638](https://github.com/user-attachments/assets/51e9e55d-0d27-4eb8-84fb-5d89ccfbbb52)
+![Screenshot_20250514_002145](https://github.com/user-attachments/assets/19c96d06-6727-49a2-a32d-0613244de36d)
 
 ## Copilot+PC
 
