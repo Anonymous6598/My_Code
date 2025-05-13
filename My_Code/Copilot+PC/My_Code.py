@@ -237,5 +237,3 @@ class My_Code_AI_Window(customtkinter.CTkToplevel, My_Code_AI_window_interface.M
 if __name__ == f"__main__":
     program: Program = Program()
     program.mainloop()                   
-    
-# f"<|system|>You are a helpful and experienced coder.<|end|><|user|>{prompt}<|end|><|assistant|>"

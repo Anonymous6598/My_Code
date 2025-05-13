@@ -2,7 +2,7 @@ import customtkinter, tkterm, typing
 
 class My_Code_bash_terminal(customtkinter.CTkToplevel):
     
-    TITLE: typing.Final[str] = f"My Code Bash window"
+    TITLE: typing.Final[str] = f"My Code Bash window (Copilot+PC edition)"
     ICON: typing.Final[str] = f"my Code icon.ico"
     
     def __init__(self: typing.Self, *args, **kwargs):
