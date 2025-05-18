@@ -1,4 +1,4 @@
-import customtkinter, My_Code_AI, My_Code_AI_window_interface, typing, asyncio, tkinter, speech_recognition
+import customtkinter, My_Code_AI, My_Code_AI_window_interface, typing, tkinter, speech_recognition
 
 class My_Code_AI_Window(customtkinter.CTkToplevel, My_Code_AI_window_interface.My_Code_AI_window_interface):
 
