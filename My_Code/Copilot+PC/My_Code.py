@@ -99,6 +99,7 @@ class Program(My_Code_window.Window, My_Code_Interface.My_Code_Interface):
 	def __delete_code__(self: typing.Self, event: str | None = None) -> None:
 		self.main_screen_code_field.delete(f"1.0", tkinter.END)
 
+	@typing.override
 	def __code_explanation__(self: typing.Self, event: str | None = None) -> None:
 		def summarize_code() -> None:
 			self.summary: str = My_Code_AI.My_Code_LM().__response__(pipe=SLM, query=f"<|system|>Explain the following code:<|end|><|user|>{self.main_screen_code_field.get(f"1.0", tkinter.END)}<|end|><|assistant|>")
@@ -108,6 +109,7 @@ class Program(My_Code_window.Window, My_Code_Interface.My_Code_Interface):
 
 		threading.Thread(target=summarize_code).start()
 
+	@typing.override
 	def __create_code__(self: typing.Self, event: str | None = None) -> None:
 		self.code_prompt_input: customtkinter.CTkInputDialog = customtkinter.CTkInputDialog(title=f"new code", text=f"enter code topic")
 		self.code_prompt_input.after(250, lambda: self.code_prompt_input.iconbitmap(self.ICON))
@@ -121,6 +123,7 @@ class Program(My_Code_window.Window, My_Code_Interface.My_Code_Interface):
 
 		threading.Thread(target=generate_code).start()
 
+	@typing.override
 	def __exit__(self: typing.Self) -> None:
 		self.main_screen_exit: tkinter.messagebox = tkinter.messagebox.askyesno(title=f"exit", message=f"would you like to exit?")
 		if self.main_screen_exit: sys.exit()
@@ -174,6 +177,7 @@ class My_Code_AI_Window(customtkinter.CTkToplevel, My_Code_AI_window_interface.M
 
 		threading.Thread(target=run_model).start()
 
+	@typing.override
 	def __audio_input__(self: typing.Self) -> None:
 		self.recognizer: speech_recognition.Recognizer = speech_recognition.Recognizer()
 		with speech_recognition.Microphone() as self.source:
@@ -184,4 +188,5 @@ class My_Code_AI_Window(customtkinter.CTkToplevel, My_Code_AI_window_interface.M
 
 if __name__ == f"__main__":
 	program: Program = Program()
+
 	program.mainloop()                   
