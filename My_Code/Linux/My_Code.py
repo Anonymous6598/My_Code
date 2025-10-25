@@ -125,6 +125,7 @@ class Program(My_Code_window.Window, My_Code_Interface.My_Code_Interface):
     
         except Exception as exception: pass
 
+	@typing.override
     def __drop_file_into_code_field__(self: typing.Self, event: str | None = None) -> None:
         self.main_screen_code_field.delete(f"1.0", tkinter.END)
         if event.data.endswith(f".py"):
@@ -148,6 +149,7 @@ class Program(My_Code_window.Window, My_Code_Interface.My_Code_Interface):
     def __delete_code__(self: typing.Self, event: str | None = None) -> None:
         self.main_screen_code_field.delete(f"1.0", tkinter.END)
 
+	@typing.override
     def __code_explanation__(self: typing.Self, event: str | None = None) -> None:
         self.summary: str = g4f.ChatCompletion.create(model=f"gpt-4o", messages=[{f"role": f"system", f"content": f"Explain the following code:"}, {f"role": f"user", f"content": self.main_screen_code_field.get(f"1.0", tkinter.END)}])
         if language_data == f"Српски":
@@ -159,6 +161,7 @@ class Program(My_Code_window.Window, My_Code_Interface.My_Code_Interface):
         else:
             tkinter.messagebox.showinfo(title=f"long story short", message=f"Summary: {self.summary}")
 
+	@typing.override
     def __create_code__(self: typing.Self, event: str | None = None) -> None:
         if language_data == f"Српски":
             self.code_prompt_input: customtkinter.CTkInputDialog = customtkinter.CTkInputDialog(title=f"нови код", text=f"унесите тему кода")
@@ -172,6 +175,7 @@ class Program(My_Code_window.Window, My_Code_Interface.My_Code_Interface):
         self.create_text: str = g4f.ChatCompletion.create(model=f"gpt-4o", messages=[{f"role": f"system", f"content": f"Create python code based on user prompt:"}, {f"role": f"user", f"content": self.code_prompt_input.get_input()}])
         self.main_screen_code_field.insert(f"1.0", self.create_text)
 
+	@typing.override
     def __fullscreen__(self: typing.Self) -> None:
         if self.attributes(f"-fullscreen"): self.attributes(f"-fullscreen", False)
         
@@ -189,7 +193,8 @@ class Program(My_Code_window.Window, My_Code_Interface.My_Code_Interface):
             if ctypes.windll.dwmapi.DwmSetWindowAttribute(hwnd, DWMWA_USE_IMMERSIVE_DARK_MODE, ctypes.byref(ctypes.c_int(value)), ctypes.sizeof(ctypes.c_int(value))) != 0: ctypes.windll.dwmapi.DwmSetWindowAttribute(hwnd, DWMWA_USE_IMMERSIVE_DARK_MODE_BEFORE_20H1, ctypes.byref(ctypes.c_int(value)), ctypes.sizeof(ctypes.c_int(value)))
         
         except Exception as err: pass
-        
+
+	@typing.override
     def __exit__(self: typing.Self) -> None:
         if language_data == f"Српски":
             self.main_screen_exit: tkinter.messagebox = tkinter.messagebox.askyesno(title=f"излаз", message=f"желите да изађете?")
@@ -206,3 +211,4 @@ class Program(My_Code_window.Window, My_Code_Interface.My_Code_Interface):
 if __name__ == f"__main__":
     program: Program = Program()
     program.mainloop()
+
