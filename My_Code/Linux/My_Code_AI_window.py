@@ -41,6 +41,7 @@ class My_Code_AI_Window(customtkinter.CTkToplevel, My_Code_AI_window_interface.M
 		self.ai_window_textbox.configure(state=f"disabled")
 		self.ai_window_entry.delete(f"-1", tkinter.END)
 
+	@typing.override
 	def __audio_input__(self: typing.Self) -> None:
 		self.recognizer: speech_recognition.Recognizer = speech_recognition.Recognizer()
 		with speech_recognition.Microphone() as self.source:
