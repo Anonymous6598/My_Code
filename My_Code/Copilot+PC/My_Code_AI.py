@@ -2,7 +2,7 @@ import typing, My_Code_AI_interface, openvino_genai
 
 class My_Code_LM(My_Code_AI_interface.My_Code_AI_interface):
     
-    LANGUAGE_MODEL: typing.Final[str] = f"CodeLlama-7b-instruct-hf" 
+    LANGUAGE_MODEL: typing.Final[str] = f"Llama-3.2-1B-Instruct" 
     DEVICE: typing.Final[str] = f"NPU"
     
     def __init__(self: typing.Self) -> None:
@@ -22,7 +22,7 @@ class My_Code_LM(My_Code_AI_interface.My_Code_AI_interface):
         self.config.temperature = 0.3
         self.config.top_p = 0.5
         self.config.top_k = 1
-        self.config.repetition_penalty = 1.0
+        self.config.repetition_penalty = 1.1
         self.config.num_return_sequences = 1
         self.config.num_beams = 1
         self.config.num_return_sequences = 1
