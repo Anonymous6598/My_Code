@@ -1,4 +1,4 @@
-import customtkinter, tkinterdnd2, My_Code_Interface, tkinter.messagebox, tkinter.filedialog, typing, tkinter, My_Code_window, CTkCodeBox, CTkMenuBar, sys, warnings, My_Code_bash_terminal, os, CTkToolTip, My_Code_AI, My_Code_AI_window_interface, speech_recognition, threading
+import customtkinter, tkinterdnd2, My_Code_Interface, tkinter.messagebox, tkinter.filedialog, typing, tkinter, My_Code_window, CTkCodeBox, CTkMenuBar, sys, warnings, My_Code_bash_terminal, os, CTkToolTip, My_Code_AI, My_Code_AI_window_interface, speech_recognition, threading, ctk_markdown
 
 warnings.filterwarnings(f"ignore")
 
@@ -144,7 +144,7 @@ class My_Code_AI_Window(customtkinter.CTkToplevel, My_Code_AI_window_interface.M
 		self.resizable(False, False)
 		self.after(250, lambda: self.iconbitmap(self.ICON))
 
-		self.ai_window_textbox: customtkinter.CTkTextbox = customtkinter.CTkTextbox(master=self, height=265, width=524, corner_radius=0, fg_color=f"transparent", text_color=(f"black", f"white"))
+		self.ai_window_textbox: ctk_markdown.CTkMarkdown = ctk_markdown.CTkMarkdown(master=self, height=265, width=524, corner_radius=0, fg_color=f"transparent", text_color=(f"black", f"white"))
 		self.ai_window_textbox.place(x=0, y=0)
 
 		self.ai_window_textbox.configure(state=f"disabled")
@@ -170,6 +170,7 @@ class My_Code_AI_Window(customtkinter.CTkToplevel, My_Code_AI_window_interface.M
 			def update_gui():
 				self.ai_window_textbox.configure(state="normal")
 				self.ai_window_textbox.insert(tkinter.END, f"USER:\n{self.ai_window_entry_data}\nCodeLlama:\n{response_text}\n")
+				self.ai_window_textbox.set_markdown(self.ai_window_textbox.get(f"1.0", tkinter.END))
 				self.ai_window_textbox.configure(state="disabled")
 				self.ai_window_entry.delete(0, tkinter.END)
 
